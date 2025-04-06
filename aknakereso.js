@@ -98,8 +98,8 @@ function feddFelCella(cella, kattintasEsemany) {
 	felfedettCella++;
 
 	if (cella.dataset.ertek === "💣") {
-    // Az összes cella elérése a DOM-ban
-    const tabla = document.getElementById("palya-container").querySelector("table"); 
+    // Az összes cella elérése a HTML-ben
+   /* const tabla = document.getElementById("palya-container").querySelector("table"); 
 
     // Minden soron végigmegyünk
     for (let i = 0; i < tabla.rows.length; i++) {
@@ -116,6 +116,16 @@ function feddFelCella(cella, kattintasEsemany) {
             cella.classList.add("felfedve");  // Osztály hozzáadása, hogy felfedjük a cellát
         }
     }
+    */
+    const ertekek = palya.flat();
+    const cellak = document.querySelectorAll("td");
+    
+    for(let i=0;i<ertekek.length;i++)
+    {
+        cellak[i].textContent=ertekek[i];
+        cellak[i].dataset.ertek=ertekek[i];
+    }
+
 	alert("💥 BUMM! Ráléptél egy bombára!");
         jatekvege = true; // A játék vége, nem lehet több cellára kattintani
         // Eltávolítjuk az összes eseménykezelőt, így leállítjuk a játékot
